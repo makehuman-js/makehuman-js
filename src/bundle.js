@@ -4,4 +4,4 @@
 // export * from './human/human-modifier.js'
 // export * from './human/proxy.js'
 // export * from './human/factors.js'
-export * from './human'
+export * from './js/human'

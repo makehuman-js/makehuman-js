@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const BUILD_DEV = !(process.env.NODE_ENV === "production")
 const OUTPUTDIR = 'build'
@@ -49,6 +50,6 @@ module.exports = {
         extensions: ["", ".js"]
     },
     devtool: 'inline-source-map',
-    plugins: [],
-    devServer: { port:'8081' }
+    plugins: [new CopyWebpackPlugin([{ from: 'test/index.html', to:'.' }])],
+    devServer: { port:'8081'}
 }

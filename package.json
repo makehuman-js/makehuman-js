@@ -2,7 +2,7 @@
   "name": "makehuman-js",
   "version": "0.1.0",
   "description": "Javascript port of makehuman",
-  "main": "build/makehuman.js",
+  "main": "src/bundle.js",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/wassname/makehuman-js.git"
@@ -25,7 +25,7 @@
     "build": "webpack --progress",
     "build:debug": "webpack --show-errors",
     "release": "NODE_ENV=production webpack --progress",
-    "test:cmd": "mocha-webpack --webpack-config  webpack.test.config.js ",
+    "test:cmd": "mocha-webpack --webpack-config  webpack.test.config.js",
     "test": "webpack-dev-server --config webpack.test.config.js --open"
   },
   "author": "wassname",

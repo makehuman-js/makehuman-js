@@ -4,7 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 const BUILD_DEV = !(process.env.NODE_ENV === "production")
-const OUTPUTDIR = BUILD_DEV ? 'build' : 'dist'
+const OUTPUTDIR = 'dist'
 const SRC_PATH = path.join(__dirname, './src')
 
 console.log(`Running in BUILD_DEV=${BUILD_DEV} mode to OUTPUTDIR=${OUTPUTDIR}`)
@@ -51,12 +51,12 @@ if (BUILD_DEV) {
 
 // main config
 module.exports = {
-    entry: './build/makehuman.js',
+    entry: {makehuman:'./src/bundle.js'},
     output: {
         path: path.join(__dirname, OUTPUTDIR),
-        filename: BUILD_DEV ? 'makehuman.js' : 'makehuman.min.js',
+        filename: BUILD_DEV ? '[name].js' : '[name].min.js',
         libraryTarget: 'umd',
-        library: 'makehuman'
+        library: '[name]'
     },
     module: {
         loaders: [
