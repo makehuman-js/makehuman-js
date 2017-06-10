@@ -1,6 +1,10 @@
 # Makehuman.js
 
-This builds human models in the browser.
+Builds human models in the browser.
+
+Try the demo at [mhwebui.wassname.com](http://mhwebui.wassname.com/)
+
+![](docs/images/ui-screenshot.png)
 
 # Licensing
 
