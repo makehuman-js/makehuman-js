@@ -1,0 +1,34 @@
+{
+    "presets": "Configured to solve this problem http://stackoverflow.com/questions/32211649/debugging-with-webpack-es6-and-babel",
+    "presets": [
+        ["es2015", {
+            "modules": false
+        }], "react", "stage-1"
+    ],
+    "plugins": [
+        "transform-runtime",
+        "transform-decorators-legacy",
+         "transform-flow-strip-types",
+        "transform-class-properties", [
+            "transform-es2015-modules-commonjs-simple", {
+                "noMangle": true
+            }
+        ]
+    ],
+    "env": {
+        "dev": {
+            "plugins": [
+                "react-hot-loader/babel"
+            ]
+        },
+        "test": {
+            "plugins": [
+                [
+                    "__coverage__", {
+                        "ignore": "*.test.*"
+                    }
+                ]
+            ]
+        }
+    }
+}
