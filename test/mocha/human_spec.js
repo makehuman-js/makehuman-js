@@ -14,8 +14,7 @@ import {
     Modifiers
 } from '../../src/js/human/human-modifier.js'
 
-describe('human.js', () => {
-
+describe('human.js', function(){
     describe('Human', () => {
 
         // TODO save, load
@@ -54,5 +53,22 @@ describe('human.js', () => {
             const newProps = Object.getOwnPropertyNames(human)
             expect(newProps).to.include.members(oldProps)
         })
+
+        it('should export to obj', function (done) {
+            const human = new Human(config)
+            human.loadModel(config)
+            .then(() => {
+                let obj = human.io.toObj()
+                let vertice_nb = human.mesh.geometry.vertices.length
+                let face_nb = human.mesh.geometry.faces.length
+                let group_nb = _.uniq(human.mesh.geometry.faces.map(f => f.materialIndex)).length
+                let counts = _.countBy(obj.split('\n').map(line => line.split(' ')[0]))
+                expect(counts.v).to.equal(vertice_nb)
+                expect(counts.g).to.equal(172)
+                expect(counts.f).to.equal(face_nb)
+                done()
+            })
+
+        });
     })
 })

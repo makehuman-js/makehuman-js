@@ -212,7 +212,7 @@ export class Proxies extends THREE.Object3D {
      */
     toggleProxy(key, state) {
         // try to find an existing proxy with this key
-        let proxy = _.find(this.human.proxies.children, p => p.url === key)
+        let proxy = _.find(this.human.proxies.children, p => p.url === key) || _.find(this.human.proxies.children, p => p.key === key) || _.find(this.human.proxies.children, p => p.name === key)
         // or init a new one
         if (!proxy) {
             // throw new Error(`Could not find loaded proxy to toggle with key: ${key}`)

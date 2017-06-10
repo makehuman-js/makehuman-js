@@ -20,9 +20,10 @@ import { Proxies } from './proxy'
 import { EthnicSkinBlender } from './ethnic-skin-blender'
 import Factors from './factors'
 import { deepParseFloat, remapKeyValuesDeep, deepRoundValues } from '../helpers/helpers'
+import '../helpers/OBJExporter'
 // import SubdivisionModifier from "imports?THREE=three!exports?THREE.SubdivisionModifier!three/examples/js/modifiers/SubdivisionModifier";
 // import BufferSubdivisionModifier from "imports?THREE=three!exports?THREE.SubdivisionModifier!three/examples/js/modifiers/BufferSubdivisionModifier";
-
+import OBJExporter from '../helpers/OBJExporter'
 
 export class HumanIO {
     constructor(human) {
@@ -77,6 +78,20 @@ export class HumanIO {
         const config = this.fromUrlQuery(parser.search.slice(1))
         this.human.importConfig(config)
         return config
+    }
+
+    toObj() {
+        const objExporter = new OBJExporter()
+        const mesh = this.human.mesh.clone()
+        // mesh.geometry.sortFacesByMaterialIndex()
+        mesh.name = ''+new Date().getTime()
+
+        let obj = objExporter.parse(mesh)
+        // don't export vn lines
+        obj = obj.split('\n').filter(line=>!line.startsWith('vn ')).join('\n')
+        return obj
+
+
     }
 }
 
