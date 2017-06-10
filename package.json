@@ -1,16 +1,11 @@
 {
   "name": "makehuman-js",
-  "version": "0.1.0",
-  "description": "Javascript port of makehuman",
+  "version": "0.1.1",
+  "description": "Builds 3D human characters in the browser",
   "main": "src/bundle.js",
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/wassname/makehuman-js.git"
-  },
-  "bugs": {
-    "url": "https://gitlab.com/wassname/makehuman-js/issues"
-  },
-  "homepage": "http://www.makehuman.org/",
+  "repository": "makehuman-js/makehuman-js",
+  "author": "wassname",
+  "license": "AGPLv3",
   "keywords": [
     "3d",
     "human",
@@ -28,15 +23,13 @@
     "test:cmd": "mocha-webpack --webpack-config  webpack.test.config.js",
     "test": "webpack-dev-server --config webpack.test.config.js --open"
   },
-  "author": "wassname",
-  "license": "AGPLv3",
   "dependencies": {
     "d3-random": "^0.2.1",
     "lodash": "^4.5.1",
     "qs": "^6.3.0",
     "three": "^0.82.1",
     "tween": "^0.9.0",
-    "makehuman-data":"0.0.1"
+    "makehuman-data":"0.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
