@@ -1,11 +1,9 @@
 module.exports = {
     "parser": 'babel-eslint',
     plugins: [
-        'react'
     ],
     extends: [
-        'airbnb',
-        'plugin:react/recommended'
+        'airbnb'
     ],
     "env": {
         "es6": true,
@@ -20,8 +18,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 6,
         ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-            jsx: true
+            experimentalObjectRestSpread: true
         },
         sourceType: 'module'
     },
@@ -42,15 +39,12 @@ module.exports = {
         "import/no-extraneous-dependencies": 'off',
         "import/extensions": 'off',
         "import/no-unresolved": 'warn',
-        "react/no-unused-prop-types": 1,
-        "react/no-multi-comp": 0,
         "no-unused-vars": 1,
         "no-param-reassign": 0,
         "curly": 1,
         "class-methods-use-this": 0,
         "no-return-assign": 0,
         "object-curly-spacing": 1,
-        "react/prefer-stateless-function":1,
         "no-mixed-operators": 0,
         "no-plusplus": 0,
         "arrow-body-style": 0
