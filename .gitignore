@@ -11,8 +11,6 @@ trash
 .chrome
 
 # webpack build
-build/
-dist/
 
 # Created by https://www.gitignore.io/api/node,linux,windows,bower
 
