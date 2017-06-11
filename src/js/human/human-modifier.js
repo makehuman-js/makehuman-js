@@ -47,8 +47,8 @@ export class Modifier {
             // Macro variables on which the targets controlled by this modifier depend
         this.macroDependencies = []
 
-        self._symmModifier = null
-        self._symmSide = 0
+        this._symmModifier = null
+        this._symmSide = 0
 
         this.targetMetaData = targetMetaData
     }
