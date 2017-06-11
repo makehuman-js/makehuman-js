@@ -1,6 +1,6 @@
 {
   "name": "makehuman-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Builds 3D human characters in the browser",
   "main": "src/bundle.js",
   "repository": "makehuman-js/makehuman-js",
