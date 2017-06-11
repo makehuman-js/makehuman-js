@@ -6,6 +6,16 @@ Try the demo at [mhwebui.wassname.com](http://mhwebui.wassname.com/)
 
 ![](docs/images/ui-screenshot.png)
 
+# Setup
+
+- clone the repo
+- `npm install`
+- `npm test`
+
+# Usage
+
+An example of how to use the library is available at [makehuman-js/makehuman-js-example](https://github.com/makehuman-js/makehuman-js-example).
+
 # Status
 
 This is a alpha product.
@@ -17,6 +27,10 @@ We welcome contributions as pull request or issues reporting issues you might co
 # Acknowledgement
 
 This browser software is inspired by the desktop python software makehuman.org. It also depends on a makehuman-data package which provides data from makehuman. Thanks to major contributors to makehuman who can be found [here](http://www.makehuman.org/halloffame.php) and all the minor contributions.
+
+# Questions
+
+Please log issues on github and ask questions on stackoverflow. Otherwise questions can be sent to "makehuman.js at wassname dot org".
 
 # Licensing
 
