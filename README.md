@@ -6,6 +6,10 @@ Try the demo at [mhwebui.wassname.com](http://mhwebui.wassname.com/)
 
 ![](docs/images/ui-screenshot.png)
 
+# Usage
+
+See the [example repo](https://github.com/makehuman-js/makehuman-js-example)
+
 # Status
 
 This is a alpha product.
