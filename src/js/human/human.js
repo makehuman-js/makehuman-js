@@ -25,6 +25,8 @@ import '../helpers/OBJExporter'
 // import BufferSubdivisionModifier from "imports?THREE=three!exports?THREE.SubdivisionModifier!three/examples/js/modifiers/BufferSubdivisionModifier";
 import OBJExporter from '../helpers/OBJExporter'
 
+
+
 export class HumanIO {
     constructor(human) {
         this.human = human
@@ -80,18 +82,52 @@ export class HumanIO {
         return config
     }
 
-    toObj() {
+    toObj(helpers=false) {
+        // const self = this
         const objExporter = new OBJExporter()
+
         const mesh = this.human.mesh.clone()
-        // mesh.geometry.sortFacesByMaterialIndex()
-        mesh.name = ''+new Date().getTime()
+        mesh.geometry = mesh.geometry.clone()
+
+        mesh.name = `makehuman_1.1-${new Date().toJSON()}`
+
+        // unmask vertices under clothes
+        const nullMaterial = mesh.material.materials.findIndex(m => m.name == "maskedFaces")
+        mesh.geometry.faces.forEach((f, i) => {
+            if (f.materialIndex === nullMaterial) {
+                f.materialIndex = this.human.mesh.geometry.faces[i].oldMaterialIndex
+            }
+        })
+
+        if (!helpers) {
+            const geom = mesh.geometry
+
+            // delete unused, uvs, faces, and vertices
+            geom.faceVertexUvs = geom.faceVertexUvs.filter((uv, i) => geom.faces[i].materialIndex === 0)
+            geom.faces = geom.faces.filter(f => f.materialIndex === 0)
+
+            // TODO remove unused vertices without breaking the obj
+            // const verticesToKeep = _.uniq(_.concat(
+            //     ...geom.faces.filter(f => f.materialIndex === 0)
+            //     .map(f => [f.a, f.b, f.c])
+            // )).sort()
+            // geom.vertices = geom.vertices.filter((v, i) => verticesToKeep.includes(i))
+            // geom.faces.forEach((f) => {
+            //     f.a = verticesToKeep.indexOf(f.a)
+            //     f.b = verticesToKeep.indexOf(f.b)
+            //     f.c = verticesToKeep.indexOf(f.c)
+            // })
+        }
 
         let obj = objExporter.parse(mesh)
-        // don't export vn lines
-        obj = obj.split('\n').filter(line=>!line.startsWith('vn ')).join('\n')
-        return obj
+        // don't export vertex normals
+        obj = obj.split('\n').filter(line => !line.startsWith('vn ')).join('\n')
 
+        // header data
+        const jsonMetadata = JSON.stringify(this.human.metadata, null, 4).replace(/\n/g, '\n#')
+        const header = `# Exported from makehuman js on ${new Date().toJSON()}\n#Source metadata:\n#${jsonMetadata}\n`
 
+        return header + obj
     }
 }
 
@@ -194,7 +230,7 @@ export class BaseHuman extends THREE.Object3D {
                 self.geometry = geometry
 
                 geometry.computeBoundingBox()
-                geometry.computeVertexNormals()
+                // geometry.computeVertexNormals()
                 geometry.name = config.character
 
                 materials.map(m => (m.morphTargets = true))
@@ -302,7 +338,7 @@ export class BaseHuman extends THREE.Object3D {
                 })
                 .then((material) => {
                     this._skinCache[url] = material
-                    material.name = url
+                    material.name = url.split('/').slice(-1)[0].split('.')[0]
                     material.skinning = true
                     return material
                 })
