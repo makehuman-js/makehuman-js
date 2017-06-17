@@ -8,19 +8,13 @@ An an example of how to use this library is in the [example repository](https://
 
 ![](docs/images/ui-screenshot.png)
 
-# Setup
+# Status
 
-- clone the repo
-- `npm install`
-- `npm test`
+This is a alpha product.
 
 # Usage
 
 An example of how to use the library is available at [makehuman-js/makehuman-js-example](https://github.com/makehuman-js/makehuman-js-example).
-
-# Status
-
-This is a alpha product.
 
 # Tests
 
@@ -28,6 +22,10 @@ This is a alpha product.
 - `npm install`
 - `npm test`
 - will launch a browser which will run mocha unit tests
+
+# Questions
+
+Please log issues on github and ask questions on stackoverflow. Otherwise questions can be sent to "makehuman.js at wassname dot org".
 
 # Contributing
 
@@ -37,9 +35,6 @@ We welcome contributions as pull request or issues reporting issues you might co
 
 This browser software is inspired by the desktop python software makehuman.org. It also depends on a makehuman-data package which provides data from makehuman. Thanks to major contributors to makehuman who can be found [here](http://www.makehuman.org/halloffame.php) and all the minor contributions.
 
-# Questions
-
-Please log issues on github and ask questions on stackoverflow. Otherwise questions can be sent to "makehuman.js at wassname dot org".
 
 # Licensing
 
