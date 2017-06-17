@@ -34,6 +34,8 @@ Please log issues on github and ask questions on stackoverflow. Otherwise questi
 
 # Licensing
 
+Copyright 2016-2017 Mike Clark (wassname)
+
 It is open source and free to use as it is licensed under the AGPLv3.
 
 Alternative commercial license terms are available from if you wish to redistribute it as part of a proprietary closed source product or deliver software software-as-a-service (SaaS) using it as part of a proprietary closed source service.
