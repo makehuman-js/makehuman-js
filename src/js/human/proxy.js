@@ -15,6 +15,7 @@ import * as THREE from 'three'
  * @return {Object}     - e.g. {group:"clothes",name:"Bikini",file:"bikini.json", materialName:"blue"}
  */
 export const parseProxyUrl = (address) => {
+    // if (!address.includes('#')) address += '#'
     const [fullUrl, materialName] = address.split('#')
     const [, , group, name, file] = fullUrl.match(/(.+\/)*(.+)\/(.+)\/(.+)\.json/)
     const key = `${group}/${name}/${file}.json${materialName ? `#${materialName}` : ''}`
@@ -206,18 +207,23 @@ export class Proxies extends THREE.Object3D {
     /**
      * Toggles or sets a proxy
      * params:
-     *   url {String} they key and url for the proxy
+     *   key {String} the url for the proxy  (relative to baseUrl) e.g. eyes/Low-Poly/Low-Poly.json#brown
      *   state {Boolean|undefined} set the proxy on or off or if undefined toggle it
      * returns a promise to load the mesh
      */
     toggleProxy(key, state) {
         // try to find an existing proxy with this key
-        let proxy = _.find(this.human.proxies.children, p => p.url === key) || _.find(this.human.proxies.children, p => p.key === key) || _.find(this.human.proxies.children, p => p.name === key)
+        let proxy = _.find(this.human.proxies.children, p => p.url === key) ||
+            _.find(this.human.proxies.children, p => p.key === key) ||
+            _.find(this.human.proxies.children, p => p.name === key)
         // or init a new one
         if (!proxy) {
+            console.warn(`Could not find proxy with key ${key}`)
             // throw new Error(`Could not find loaded proxy to toggle with key: ${key}`)
             proxy = new Proxy(`${this.human.config.baseUrl}proxies/${key}`, this.human)
             this.add(proxy)
+        } else {
+            console.log('toggleProxy', proxy.url, state)
         }
         return proxy.toggle(state)
     }
