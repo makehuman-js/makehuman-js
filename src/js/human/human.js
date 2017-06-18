@@ -107,16 +107,16 @@ export class HumanIO {
             geom.faces = geom.faces.filter(f => f.materialIndex === 0)
 
             // TODO remove unused vertices without breaking the obj
-            // const verticesToKeep = _.uniq(_.concat(
-            //     ...geom.faces.filter(f => f.materialIndex === 0)
-            //     .map(f => [f.a, f.b, f.c])
-            // )).sort()
-            // geom.vertices = geom.vertices.filter((v, i) => verticesToKeep.includes(i))
-            // geom.faces.forEach((f) => {
-            //     f.a = verticesToKeep.indexOf(f.a)
-            //     f.b = verticesToKeep.indexOf(f.b)
-            //     f.c = verticesToKeep.indexOf(f.c)
-            // })
+            const verticesToKeep = _.sortBy(_.uniq(_.concat(
+                ...geom.faces.filter(f => f.materialIndex === 0)
+                .map(f => [f.a, f.b, f.c])
+            )))
+            geom.vertices = geom.vertices.filter((v, i) => verticesToKeep.includes(i))
+            geom.faces.forEach((f) => {
+                f.a = verticesToKeep.indexOf(f.a)
+                f.b = verticesToKeep.indexOf(f.b)
+                f.c = verticesToKeep.indexOf(f.c)
+            })
         }
 
         let obj = objExporter.parse(mesh)
