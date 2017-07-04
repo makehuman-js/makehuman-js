@@ -2,7 +2,7 @@
 
 A library that builds human models in the browser.
 
-A live demo is available at [mhwebui.wassname.com](http://mhwebui.wassname.com/)
+A live demo (NSFW while loading) is available at [mhwebui.wassname.com](http://mhwebui.wassname.com/)
 
 An an example of how to use this library is in the [example repository](https://github.com/makehuman-js/makehuman-js-example).
 
