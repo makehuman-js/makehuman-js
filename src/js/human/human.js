@@ -459,7 +459,10 @@ export class BaseHuman extends THREE.Object3D {
             self._poseTweens.map((tween) => { return tween ? tween.stop() : '' })
             self._poseTweens = Object.keys(pose).map((boneName) => {
                 const bone = this.mesh.skeleton.bones.find(b => b.name === boneName)
-                if (!bone) console.error('couldnt find bone', boneName)
+                if (!bone) {
+                    console.error('couldnt find bone', boneName)
+                    return null
+                }
                 // Tween the pose
                 const data = pose[bone.name]
                 if (!interval) {
