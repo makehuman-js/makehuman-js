@@ -14,13 +14,16 @@
     "makehuman"
   ],
   "scripts": {
-    "start": "webpack-dev-server --inline --progress",
+    "start": "./node_modules/.bin/webpack-dev-server --inline --progress",
+    "start_windows": ".\\node_modules\\.bin\\webpack-dev-server --inline --progress",
     "try_release": "NODE_ENV=production npm start",
     "watch": "webpack --progress --watch",
     "build": "webpack --progress",
     "build:debug": "webpack --show-errors",
     "release": "NODE_ENV=production webpack --progress",
-    "test": "webpack-dev-server --config webpack.test.config.js --open"
+    "release_windows": "NODE_ENV=production webpack --progress",
+    "test": "./node_modules/.bin/webpack-dev-server --config webpack.test.config.js --open",
+    "test_windows": ".\\node_modules\\.bin\\webpack-dev-server --config webpack.test.config.js --open"
   },
   "dependencies": {
     "d3-random": "^0.2.1",
