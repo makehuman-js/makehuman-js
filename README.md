@@ -20,8 +20,8 @@ An example of how to use the library is available at [makehuman-js/makehuman-js-
 
 - clone
 - `npm install`
-- `npm test`
-- will launch a browser which will run mocha unit tests
+- `npm test` (or on windows use `npm run test_windows`)
+- this will launch a browser which will run mocha unit tests
 
 # Questions
 
