@@ -31,7 +31,7 @@
     "qs": "^6.3.0",
     "three": "^0.82.1",
     "tween": "^0.9.0",
-    "makehuman-data":"0.0.2"
+    "makehuman-data": "0.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
@@ -55,6 +55,7 @@
     "chai-as-promised": "^5.2.0",
     "chai-bignumber": "^1.0.0",
     "chai-things": "^0.2.0",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^3.10.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-import-resolver-webpack": "^0.7.0",
