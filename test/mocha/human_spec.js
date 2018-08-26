@@ -79,8 +79,9 @@ describe('human.js', () => {
                 expect(counts.v).to.equal(verticeNb)
                 expect(counts.g).to.equal(172)
                 expect(counts.f).to.equal(faceNb)
-                done()
-            })
+                })
+                .then(() => done())
+                .catch(error => done(error))
         })
 
         it('should export to obj without helpers', (done) => {
@@ -92,8 +93,10 @@ describe('human.js', () => {
                 const counts = _.countBy(obj.split('\n').map(line => line.split(' ')[0]))
                 expect(counts.v).to.equal(verticeNb)
                 expect(counts.g).to.equal(1)
-                done()
-            })
+                })
+                .then(() => done())
+                .catch(error => done(error))
+            
         })
     })
 })
