@@ -15,8 +15,9 @@ describe('ethnic-skin-blender.js', () => {
                 .then(() => {
                     const color = self.human.ethnicSkinBlender.valueOf()
                     expect(color.isColor).to.be(true)
-                    done()
                 })
+                .then(() => done())
+                .catch(error => done(error))
         })
     })
 })
