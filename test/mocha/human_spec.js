@@ -31,7 +31,7 @@ describe('human.js', () => {
                     expect(human).to.have.property('mesh').that.has.property('material')
                     done()
                 })
-        })
+        }).timeout(6000)
 
         it('should load targets from config', (done) => {
             const human = new Human(config)
@@ -82,14 +82,19 @@ describe('human.js', () => {
                 })
                 .then(() => done())
                 .catch(error => done(error))
-        })
+        }).timeout(6000)
 
         it('should export to obj without helpers', (done) => {
             const human = new Human(config)
             human.loadModel(config)
             .then(() => {
                 const obj = human.io.toObj(false)
-                const verticeNb = human.mesh.geometry.vertices.length
+                const verticeNb = human.mesh.geometry.faces.filter(f=>f.materialIndex==0).reduce((o,f)=>{
+                    f.a in o? null: o.push(f.a)
+                    f.b in o? null: o.push(f.b)
+                    f.c in o? null: o.push(f.c)
+                    return o
+                 }, []).length
                 const counts = _.countBy(obj.split('\n').map(line => line.split(' ')[0]))
                 expect(counts.v).to.equal(verticeNb)
                 expect(counts.g).to.equal(1)
@@ -97,6 +102,6 @@ describe('human.js', () => {
                 .then(() => done())
                 .catch(error => done(error))
             
-        })
+        }).timeout(6000)
     })
 })
