@@ -82,6 +82,11 @@ export class HumanIO {
         return config
     }
 
+     /**
+     * Export the human mesh with morphs but not pose, skin, or accessories.
+     * @param {bool} helpers - if true it strips the helper meshes like hair-helper.
+     * @return {string} Wavefront obj file compatible with blender
+     */
     toObj(helpers=false) {
         // const self = this
         const objExporter = new OBJExporter()
@@ -100,6 +105,12 @@ export class HumanIO {
         })
 
         if (!helpers) {
+            /* Makehuman has a human body mesh, then it has some invisible meshes attached to it.
+             * These are hair-helper, dress-helpers etc which invisible extensions to the human body 
+             * used to attach clothes or hair to. When the human is morphed so are the helpers,
+             * ensuring that the clothes fit the morphed human. 
+             * If the helper option is not selected, lets remove the helper vertices.
+             */
             const geom = mesh.geometry
 
             // delete unused, uvs, faces, and vertices
