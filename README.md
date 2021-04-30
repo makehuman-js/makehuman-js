@@ -38,7 +38,7 @@ This browser software is inspired by the desktop python software makehuman.org. 
 
 # Licensing
 
-(This license if for the makehuman-js code, not the data which I do not own)
+(This license is for the makehuman-js code, outputs are CC0, the data/models remain under the makehuman project licence)
 
 Copyright 2016-2017 Mike Clark (wassname)
 
@@ -46,4 +46,4 @@ It is open source and free to use as it is licensed under the AGPLv3.
 
 Alternative commercial license terms are available from if you wish to redistribute it as part of a proprietary closed source product or deliver software software-as-a-service (SaaS) using it as part of a proprietary closed source service.
 
-Projects or startups in the first two years, or ones making under $2000/year, get a free commercial license. Just message me and let me know your using it.
+Projects or startups in the first two years or making under $2000/year, get a free commercial license. Just message me and let me know your using it.
